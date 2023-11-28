@@ -1,0 +1,9 @@
+[toolchain]
+channel = "nightly-2023-08-19" # <- as of writing, this is the exact rust version embassy uses
+components = [
+    "rust-src",
+    "rustfmt",
+] # <- optionally add "llvm-tools-preview" for some extra features like "cargo size"
+targets = [
+    "thumbv6m-none-eabi", # <-change for your platform
+]

@@ -1,0 +1,43 @@
+[package]
+name = "L073RZ_blink"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+defmt = "0.3"
+defmt-rtt = "0.4"
+
+cortex-m = { version = "0.7.7", features = [
+    "inline-asm",
+    "critical-section-single-core",
+] }
+cortex-m-rt = "0.7.3"
+
+
+embassy-stm32 = { git = "https://github.com/embassy-rs/embassy", features = [
+    "stm32l073rz",     # The board we're developing on
+    "defmt",
+    "time-driver-any",
+    "exti",
+    "unstable-traits",
+    "memory-x",
+] }
+embassy-executor = { git = "https://github.com/embassy-rs/embassy", features = [
+    "arch-cortex-m",
+    "executor-thread",
+    "defmt",
+    "integrated-timers",
+] }
+embassy-time = { git = "https://github.com/embassy-rs/embassy", features = [
+    "defmt",
+    "defmt-timestamp-uptime",
+    "tick-hz-32_768",
+] }
+
+
+panic-probe = { version = "0.3", features = ["print-defmt"] }
